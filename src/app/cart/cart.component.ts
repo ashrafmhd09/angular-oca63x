@@ -19,7 +19,6 @@ export class CartComponent implements OnInit {
     name: new FormControl(),
     address: new FormControl(),
   });
-  testing = 'test';
 
   ngOnInit(): void {
     console.log('logging');
@@ -28,8 +27,11 @@ export class CartComponent implements OnInit {
 
   onSubmit() {
     // console.log('logging2');
-    // this.items = this.cartService.clearCart();
-    // console.warn('Your order has been submitted', this.checkoutForm.value);
-    // this.checkoutForm.reset();
+    this.items = this.cartService.clearCart();
+    window.alert(
+      'Your order has been submitted ' +
+        [this.checkoutForm.value.name, this.checkoutForm.value.address]
+    );
+    this.checkoutForm.reset();
   }
 }
